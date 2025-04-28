@@ -1,0 +1,164 @@
+1 Create a class Person with properties name and age
+class Person {
+    String name;
+    int age;
+
+    // Default constructor with age set to 18
+    public Person() {
+        this.age = 18;
+    }
+
+    // Parameterized constructor
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Method to display name and age
+    public void displayInfo() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+2 Create class Product with pid, price, and quantity:
+import java.util.Scanner;
+
+class Product {
+    int pid;
+    double price;
+    int quantity;
+
+    // Parameterized constructor
+    public Product(int pid, double price, int quantity) {
+        this.pid = pid;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    // Method to calculate total amount spent on this product
+    public double getTotalAmount() {
+        return price * quantity;
+    }
+}
+
+class ProductMain {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Product[] products = new Product[5];
+
+        // Accepting product details
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Enter details for product " + (i + 1) + ": ");
+            System.out.print("Enter Product ID: ");
+            int pid = sc.nextInt();
+            System.out.print("Enter Price: ");
+            double price = sc.nextDouble();
+            System.out.print("Enter Quantity: ");
+            int quantity = sc.nextInt();
+            products[i] = new Product(pid, price, quantity);
+        }
+
+        // Finding the product with highest price
+        Product maxPriceProduct = products[0];
+        for (Product product : products) {
+            if (product.price > maxPriceProduct.price) {
+                maxPriceProduct = product;
+            }
+        }
+
+        System.out.println("Product with highest price has PID: " + maxPriceProduct.pid);
+
+        // Calculating total amount spent on all products
+        double totalAmount = calculateTotalAmount(products);
+        System.out.println("Total amount spent on all products: " + totalAmount);
+    }
+
+    // Method to calculate total amount spent on all products
+    public static double calculateTotalAmount(Product[] products) {
+        double total = 0;
+        for (Product product : products) {
+            total += product.getTotalAmount();
+        }
+        return total;
+    }
+}
+3 Create class Account with a balance:
+class Account {
+    double balance;
+
+    // No-argument constructor
+    public Account() {
+        this.balance = 0.0;
+    }
+
+    // Constructor with argument
+    public Account(double balance) {
+        this.balance = balance;
+    }
+
+    // Method to deposit amount
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    // Method to withdraw amount
+    public void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+        } else {
+            System.out.println("Insufficient balance!");
+        }
+    }
+
+    // Method to display balance
+    public void displayBalance() {
+        System.out.println("Current balance: " + balance);
+    }
+}
+
+class AccountMain {
+    public static void main(String[] args) {
+        Account account = new Account(1000.0);
+
+        account.deposit(500.0);
+        account.withdraw(200.0);
+        account.displayBalance();
+    }
+}
+4 Define a base class Person and a subclass Employee
+class Person {
+    String name;
+    int age;
+
+    // Constructor to initialize Person's attributes
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+class Employee extends Person {
+    String employeeID;
+    double salary;
+
+    // Constructor to initialize Employee's attributes
+    public Employee(String name, int age, String employeeID, double salary) {
+        super(name, age); // Using super to initialize Person's attributes
+        this.employeeID = employeeID;
+        this.salary = salary;
+    }
+
+    // Method to display employee details
+    public void displayEmployeeDetails() {
+        System.out.println("Employee ID: " + employeeID);
+        System.out.println("Salary: " + salary);
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+class EmployeeMain {
+    public static void main(String[] args) {
+        Employee emp = new Employee("sk", 30, "sk28", 55000.0);
+        emp.displayEmployeeDetails();
+    }
+}
