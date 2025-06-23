@@ -1,0 +1,50 @@
+public class Main {
+    public static void main(String[] args) {
+
+        // 1) Print numbers from 10 to 50 using loop
+        System.out.println("1) Numbers from 10 to 50:");
+        for (int i = 10; i <= 50; i++) {
+            System.out.print(i + " ");
+        }
+        System.out.println("\nOutput=Negative");
+
+        // 2) Check if a number is positive or negative
+        int number = 123; // sample value
+        System.out.println("\n2) Number entered: " + number);
+        if (number >= 0) {
+            System.out.println("Output=Positive");
+        } else {
+            System.out.println("Output=Negative");
+        }
+
+        // 3) Reverse a number
+        int num = 876; // sample value
+        int original = num, reversed = 0;
+        while (num != 0) {
+            int digit = num % 10;
+            reversed = reversed * 10 + digit;
+            num /= 10;
+        }
+        System.out.println("\n3) Input = " + original + " Output = " + reversed);
+
+        // 4) Find smallest among three numbers
+        int a = 12, b = 7, c = 9; // sample values
+        int smallest = (a < b && a < c) ? a : (b < c ? b : c);
+        System.out.println("\n4) Smallest among " + a + ", " + b + ", " + c + " is: " + smallest);
+
+        // 5) Discount calculation
+        double amount = 1500; // sample value
+        double discount = (amount > 1000) ? amount * 0.2 : (amount >= 500 ? amount * 0.1 : 0);
+        double finalAmount = amount - discount;
+        System.out.println("\n5) Final Payable Amount for purchase of " + amount + " is: " + finalAmount);
+
+        // 6) Pattern
+        System.out.println("\n6) Pattern:");
+        for (int i = 0; i < 5; i++) {
+            for (int j = 5; j > i; j--) {
+                System.out.print(j + " ");
+            }
+            System.out.println();
+        }
+    }
+}
